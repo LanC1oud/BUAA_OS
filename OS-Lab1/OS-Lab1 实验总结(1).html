@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+        <html>
+        <head>
+            <meta charset="UTF-8">
+            <title>OS-Lab1 &#x5b9e;&#x9a8c;&#x62a5;&#x544a;</title>
+            <style>
+/* From extension vscode.github */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+.vscode-dark img[src$=\#gh-light-mode-only],
+.vscode-light img[src$=\#gh-dark-mode-only],
+.vscode-high-contrast:not(.vscode-high-contrast-light) img[src$=\#gh-light-mode-only],
+.vscode-high-contrast-light img[src$=\#gh-dark-mode-only] {
+	display: none;
+}
+
+</style>
+            
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/markdown.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/highlight.css">
+<style>
+            body {
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', system-ui, 'Ubuntu', 'Droid Sans', sans-serif;
+                font-size: 14px;
+                line-height: 1.6;
+            }
+        </style>
+        <style>
+.task-list-item {
+    list-style-type: none;
+}
+
+.task-list-item-checkbox {
+    margin-left: -20px;
+    vertical-align: middle;
+    pointer-events: none;
+}
+</style>
+<style>
+:root {
+  --color-note: #0969da;
+  --color-tip: #1a7f37;
+  --color-warning: #9a6700;
+  --color-severe: #bc4c00;
+  --color-caution: #d1242f;
+  --color-important: #8250df;
+}
+
+</style>
+<style>
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-note: #2f81f7;
+    --color-tip: #3fb950;
+    --color-warning: #d29922;
+    --color-severe: #db6d28;
+    --color-caution: #f85149;
+    --color-important: #a371f7;
+  }
+}
+
+</style>
+<style>
+.markdown-alert {
+  padding: 0.5rem 1rem;
+  margin-bottom: 16px;
+  color: inherit;
+  border-left: .25em solid #888;
+}
+
+.markdown-alert>:first-child {
+  margin-top: 0
+}
+
+.markdown-alert>:last-child {
+  margin-bottom: 0
+}
+
+.markdown-alert .markdown-alert-title {
+  display: flex;
+  font-weight: 500;
+  align-items: center;
+  line-height: 1
+}
+
+.markdown-alert .markdown-alert-title .octicon {
+  margin-right: 0.5rem;
+  display: inline-block;
+  overflow: visible !important;
+  vertical-align: text-bottom;
+  fill: currentColor;
+}
+
+.markdown-alert.markdown-alert-note {
+  border-left-color: var(--color-note);
+}
+
+.markdown-alert.markdown-alert-note .markdown-alert-title {
+  color: var(--color-note);
+}
+
+.markdown-alert.markdown-alert-important {
+  border-left-color: var(--color-important);
+}
+
+.markdown-alert.markdown-alert-important .markdown-alert-title {
+  color: var(--color-important);
+}
+
+.markdown-alert.markdown-alert-warning {
+  border-left-color: var(--color-warning);
+}
+
+.markdown-alert.markdown-alert-warning .markdown-alert-title {
+  color: var(--color-warning);
+}
+
+.markdown-alert.markdown-alert-tip {
+  border-left-color: var(--color-tip);
+}
+
+.markdown-alert.markdown-alert-tip .markdown-alert-title {
+  color: var(--color-tip);
+}
+
+.markdown-alert.markdown-alert-caution {
+  border-left-color: var(--color-caution);
+}
+
+.markdown-alert.markdown-alert-caution .markdown-alert-title {
+  color: var(--color-caution);
+}
+
+</style>
+        
+        </head>
+        <body class="vscode-body vscode-light">
+            <h1 id="os-lab1-实验报告">OS-Lab1 实验报告</h1>
+<h2 id="思考题">思考题</h2>
+<h3 id="thinking11">Thinking1.1</h3>
+<h4 id="gcc编译readelf">gcc编译readelf</h4>
+<p>原生x86
+<img src="file:///c:\Users\96330\Desktop\File\OS\OS-Lab1\b38233e1115c1acf3f10809679021457.png" alt="alt text"></p>
+<p>MIPS交叉编译工具链
+<img src="file:///c:\Users\96330\Desktop\File\OS\OS-Lab1\c4e59a9b2f9ebab7411e04a61781f37d.png" alt="alt text"></p>
+<p><img src="file:///c:\Users\96330\Desktop\File\OS\OS-Lab1\0acf280b280cc9f775dedbf27cb219f9.jpg" alt="alt text"></p>
+<p>readelf在不使用mips交叉编译工具链的时候也可以正确阅读由mips交叉编译工具链编译得到的内容。</p>
+<h4 id="objdump">objdump</h4>
+<p>用原生x86的objdump反编译gccmain.o结果如下：</p>
+<p><img src="file:///c:\Users\96330\Desktop\File\OS\OS-Lab1\d3255266569d8861ad893f797cdb9f9f.jpg" alt="alt text"></p>
+<p>用MIPS交叉编译工具链的objdump反编译mipsgccmain.o结果如下：</p>
+<p><img src="file:///c:\Users\96330\Desktop\File\OS\OS-Lab1\6921181bd961fb51911de2289c5e7afe.png" alt="alt text"></p>
+<h4 id="objdump的参数含义">objdump的参数含义</h4>
+<p><code>man objdump</code></p>
+<p><img src="file:///c:\Users\96330\Desktop\File\OS\OS-Lab1\image.png" alt="alt text"></p>
+<p>其中比较常用的如下：</p>
+<p>-e：显示调试信息
+-D：反汇编所有section
+-r：显示文件的重定位入口
+-S：尽可能反汇编出源代码
+-z：将0也进行反汇编</p>
+<h3 id="thinking12">Thinking1.2</h3>
+<h4 id="用readelf解析mos">用readelf解析mos</h4>
+<p><img src="file:///c:\Users\96330\Desktop\File\OS\OS-Lab1\7dcb74ef6697514107ac1e2fdfcb9e33.png" alt="alt text"></p>
+<h4 id="用readelf解析文件本身">用readelf解析文件本身</h4>
+<p>无输出结果。</p>
+<p>可以用<code>readelf -h</code>来研究文件头</p>
+<p>用readelf分析mos与readelf.o</p>
+<p><img src="file:///c:\Users\96330\Desktop\File\OS\OS-Lab1\a8c1c730c3e5b59dbe810f0c080d7917.png" alt="alt text"></p>
+<p>其类别分别为ELF32和ELF64。~~~~</p>
+<p>在readelf.c中，我们采用的都是ELF32类型的数据结构，因此不能用来解析ELF64文件。</p>
+<h3 id="thinking13">Thinking1.3</h3>
+<ul>
+<li>
+<p>为什么操作系统的内核入口并没有放在上电启动地址，还能保证内核入口被正确跳转到？</p>
+<ul>
+<li>上电启动位置是用于启动bootloader，实现硬件初始化等内容。而bootloader所加载的内容才决定了内核的入孔，也就是start.S中写的_start函数才是mips_init的入口。</li>
+</ul>
+</li>
+</ul>
+<h2 id="难点分析">难点分析</h2>
+<h3 id="readelf文件的实现">readelf文件的实现</h3>
+<p>.elf包含.exe,.o和.so，即<strong>可执行文件</strong>，<strong>可重定位文件</strong>和<strong>共享对象文件</strong>。可以用readelf解析hello，readelf，readelf.o，main.o等多种文件。</p>
+<p>在elf.h中，对ELF32的种种内容做出了定义。即<code>Elf32_Ehdr``Elf32_Shdr``Elf32_phdr</code>三种类型，分别描述ELF头，节头表和段头表。</p>
+<p>实现的readelf是只能解析ELF32的section地址的可执行程序。使用shdr指针定位各个section，从而输出地址。让sh_table指针指向节头表第一项的地址：<code>binary + ehdr-&gt;e_shoff</code>，接下来循环输出即可。</p>
+<p>注意需将sh_table这一指针变为Elf_Shdr*类型。</p>
+<h3 id="printk函数的实现">printk函数的实现</h3>
+<p>vprintfmt的参数：out函数指针，data指针，fmt字符串，ap数组。</p>
+<p>out函数指针能实现在同一函数中调用不同形式的out函数，可以实现输出以buf为起点，长度为len的字符串。</p>
+<p>我们需要补充的核心逻辑就是将<code>%x</code>替换为对应的数据。即找到%并解析%后面的内容。每当找到%时就讲前面内容全部out输出，找到%时通过对其后内容解析来改变参数即可。</p>
+<h2 id="实验体会">实验体会</h2>
+<p>Lab1不同于Lab0的前置知识，一下需要阅读大量的代码，初期的实验推进十分困难。指导书的阅读也频频受阻。（为了降低不必要的负担，我还是选择使用vscode进行代码阅读）</p>
+<p>为了接下来的Lab顺利进行，完整的项目阅读是很有必要的，虽然有许多暂时与Lab1无关，但是多花些时间完整梳理整个脉络相必对以后大有益处。</p>
+
+            
+            
+        </body>
+        </html>
